@@ -1,0 +1,23 @@
+import java.util.Random;
+public class Main {
+
+	public static void main(String[] args) {
+		Random r = new Random();
+		float finalPrumer = 0f;
+		for(int i = 1; i<21;i++) 
+		{
+			int prumer = 0;
+			int cislo = r.nextInt()%100;
+			System.out.println("cislo "+  cislo);
+			prumer = prumer + cislo;
+			finalPrumer = prumer / i;
+		}
+		System.out.println(finalPrumer);
+		
+		
+		
+		
+		
+	}
+
+}
