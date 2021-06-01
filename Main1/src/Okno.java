@@ -67,7 +67,7 @@ public class Okno extends JFrame implements ActionListener{
 		{
 			for(int j = 0; j<10; j++)
 			{
-				JButton b = new JButton();
+				JButton b = new pocitacPole();
 				
 				
 				b.setBounds(x+j*width,y+i*(-height),width,height);
