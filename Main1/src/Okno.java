@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.util.*;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -13,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Okno extends JFrame implements ActionListener{
 
-	private JPanel contentPane;
+	private JPanel prvniPanel;
 	
 	private JPanel druhyPanel;
 	
@@ -36,15 +37,23 @@ public class Okno extends JFrame implements ActionListener{
 	public Okno() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//array pocitace
+		ArrayList<pocitacPole> pocitacArra = new ArrayList<>();
+		
+		
+		//array hrace
+		ArrayList<hracPole> hracArra = new ArrayList<>();
+		
+		
 		//hlavni layout
 		setBounds(100, 100, 1000, 500);
 		setLayout(new BorderLayout());
 		
 		
 		
-		contentPane = new JPanel();
-		contentPane.setLayout(new GridLayout(10,10));
-		this.add(contentPane,BorderLayout.WEST);
+		prvniPanel = new JPanel();
+		prvniPanel.setLayout(new GridLayout(10,10));
+		this.add(prvniPanel,BorderLayout.WEST);
 		
 		
 		//prvni okno
@@ -52,10 +61,12 @@ public class Okno extends JFrame implements ActionListener{
 		{
 			for(int j = 0; j<10; j++)
 			{
-				JButton b = new JButton();
-				b.addActionListener(this);
+				hracPole b = new hracPole(j,i);
+				
 				b.setBounds(x+j*width,y+i*(-height),width,height);
-				contentPane.add(b);
+				prvniPanel.add(b);
+				hracArra.add(b);
+				
 			}
 		}
 		
@@ -67,11 +78,26 @@ public class Okno extends JFrame implements ActionListener{
 		{
 			for(int j = 0; j<10; j++)
 			{
-				JButton b = new pocitacPole();
-				
-				
-				b.setBounds(x+j*width,y+i*(-height),width,height);
+				pocitacPole b = new pocitacPole(j,i);
 				druhyPanel.add(b);
+				b.setBounds(x+j*width,y+i*(-height),width,height);
+				pocitacArra.add(b);
+				b.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) 
+					{
+						if(b.getHit(b)) 
+						{
+							b.setEnabled(false);
+						}
+						if(b.getShip()) 
+						{
+							b.setText("X");
+						}
+					}
+				});
+				
+				
 			}
 		}
 		this.add(druhyPanel,BorderLayout.EAST);
@@ -88,11 +114,18 @@ public class Okno extends JFrame implements ActionListener{
 		
 	}
 
+
+
+
+
+
 	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 
 
