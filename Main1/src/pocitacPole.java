@@ -28,4 +28,6 @@ public class pocitacPole extends JButton{
 	public boolean getShip() {
 		return isShip;
 	}
+	
+	
 }

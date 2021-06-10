@@ -92,7 +92,7 @@ public class Okno extends JFrame implements ActionListener{
 						}
 						if(b.getShip()) 
 						{
-							b.setText("X");
+							b.setText("X");	
 						}
 					}
 				});
@@ -121,7 +121,7 @@ public class Okno extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
